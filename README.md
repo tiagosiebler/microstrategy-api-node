@@ -7,12 +7,12 @@ HTTP requests are handled by [axios](https://www.npmjs.com/package/axios), the p
 ## Installation
 ### npm
 ```
-npm i mstr --save
+npm i microstrategy --save
 ```
 
 ### yarn
 ```
-yarn add mstr
+yarn add microstrategy
 ```
 
 ## Getting Started
@@ -20,7 +20,7 @@ yarn add mstr
 - Provide a URL to your MicroStrategy Library REST API via the baseUrl parameter.
 - By default, your session state is stored and persisted by your client instance.
 ```javascript
-const mstr = require('mstr');
+const mstr = require('microstrategy');
 
 (async ()=> {
   const baseUrl = 'http://aps-tsiebler-vm:8080/11.1GALibrary/api';
