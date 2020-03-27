@@ -1,0 +1,29 @@
+{
+  "name": "mstr",
+  "version": "0.1.0",
+  "description": "A node.js wrapper for the MicroStrategy REST API",
+  "main": "./lib/mstr.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "testlogin": "node samples/login.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tiagosiebler/microstrategy-api-node"
+  },
+  "keywords": [
+    "microstrategy",
+    "mstr",
+    "rest",
+    "api",
+    "library",
+    "mstr"
+  ],
+  "author": "Tiago Siebler",
+  "license": "MIT",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "axios": "^0.19.2",
+    "querystring": "^0.2.0"
+  }
+}
