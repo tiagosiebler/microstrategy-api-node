@@ -1,4 +1,4 @@
-# MicroStrategy REST API ![npm version](https://img.shields.io/npm/v/microstrategy.svg) ![npm size](https://img.shields.io/bundlephobia/min/microstrategy.svg) ![npm downloads](https://img.shields.io/npm/dt/microstrategy.svg)
+# MicroStrategy REST API [![npm version](https://img.shields.io/npm/v/microstrategy.svg) ![npm size](https://img.shields.io/bundlephobia/min/microstrategy.svg) ![npm downloads](https://img.shields.io/npm/dt/microstrategy.svg)](https://www.npmjs.com/package/microstrategy)
 A light npm wrapper around some of the MicroStrategy REST API endpoints.
 
 ## Dependencies
