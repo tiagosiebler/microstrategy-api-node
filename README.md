@@ -16,11 +16,12 @@ yarn add microstrategy
 ```
 
 ## Getting Started
-- Import the module and create a new instance.
+- Import the module and create a new instance of the REST client.
 - Provide a URL to your MicroStrategy Library REST API via the baseUrl parameter.
 - Login & Logout methods are exposed on the REST client. Other methods are grouped by topic.
+- Every REST method returns a Promise, making this library [async await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) ready.
+- By default, your session state headers are stored and persisted by your client instance.
 
-- By default, your session state is stored and persisted by your client instance.
 ```javascript
 const mstr = require('microstrategy');
 
@@ -47,8 +48,6 @@ const mstr = require('microstrategy');
   const dossierDefn = await DossierAPI.getDossierDefinition(dossierId, projectId);
 })();
 ```
-
-Every REST method returns a Promise, making this library [async await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) ready.
 
 ## REST API Documentation
 These methods are simpler wrappers around the APIs exposed by the MicroStrategy Library REST API server. For full documentation, refer to your MicroStrategy Library's `api-docs` endpoint.
