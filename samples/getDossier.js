@@ -15,11 +15,13 @@ const mstr = require('../lib/mstr.js');
   // MicroStrategy Tutorial
   const projectId = 'B19DEDCC11D4E0EFC000EB9495D0F44F';
 
+  const DossierAPI = mstrApi.dossiersAndDocuments;
+
   try {
     const dossierId = 'C103CFA847057FC9FCF772ADF9092BD9';
-    const dossierDefn = await mstrApi.getDossierDefinition(dossierId, projectId);
+    const dossierDefn = await DossierAPI.getDossierDefinition(dossierId, projectId);
 
-    const dossierInstanceState = await mstrApi.createDossierInstance(dossierId, projectId);
+    const dossierInstanceState = await DossierAPI.createDossierInstance(dossierId, projectId);
     const dossierInstanceId = dossierInstanceState.mid;
 
     console.log(`\tDossier instance ID: ${dossierInstanceId}`);
@@ -38,7 +40,7 @@ const mstr = require('../lib/mstr.js');
             visualizationKey: visualizationKey
           }
 
-          const visResult = await mstrApi.getDossierVisualization(params, projectId);
+          const visResult = await DossierAPI.getDossierVisualization(params, projectId);
           console.log('visResult: ', JSON.stringify(visResult, null, 2));
         }
       }

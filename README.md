@@ -18,17 +18,19 @@ yarn add microstrategy
 ## Getting Started
 - Import the module and create a new instance.
 - Provide a URL to your MicroStrategy Library REST API via the baseUrl parameter.
+- Login & Logout methods are exposed on the REST client. Other methods are grouped by topic.
+
 - By default, your session state is stored and persisted by your client instance.
 ```javascript
 const mstr = require('microstrategy');
 
 (async ()=> {
   const baseUrl = 'http://aps-tsiebler-vm:8080/11.1GALibrary/api';
-  const mstrApi = new mstr.REST({
+  const mstrClient = new mstr.REST({
     baseUrl: baseUrl
   });
 
-  await mstrApi.login({
+  await mstrClient.login({
     username: 'Administrator',
     password: '',
     loginMode: 1
@@ -37,13 +39,16 @@ const mstr = require('microstrategy');
 
   // MicroStrategy Tutorial
   const projectId = 'B19DEDCC11D4E0EFC000EB9495D0F44F';
+
   const dossierId = 'C103CFA847057FC9FCF772ADF9092BD9';
-  const dossierDefn = await mstrApi.getDossierDefinition(dossierId, projectId);
+
+  // APIs are grouped by topic
+  const DossierAPI = mstrClient.dossiersAndDocuments;
+  const dossierDefn = await DossierAPI.getDossierDefinition(dossierId, projectId);
 })();
 ```
 
 Every REST method returns a Promise, making this library [async await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) ready.
-Following examples will use the `await` form, which requires some configuration you will have to lookup.
 
 ## REST API Documentation
 These methods are simpler wrappers around the APIs exposed by the MicroStrategy Library REST API server. For full documentation, refer to your MicroStrategy Library's `api-docs` endpoint.
