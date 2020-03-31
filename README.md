@@ -66,7 +66,7 @@ For public REST API documentation from the MicroStrategy demo environment, refer
 https://demo.microstrategy.com/MicroStrategyLibrary/api-docs
 
 ## More Samples
-Refer to the [samples](./samples/) folder for more samples tested in node.js. These can be directly executed from node, for example:
+Refer to the [samples](./samples/) folder for more samples tested in node.js. These can be directly executed using the node command:
 ```bash
 node samples/getDossier.js
 ```
