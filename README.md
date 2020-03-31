@@ -40,12 +40,13 @@ const mstr = require('microstrategy');
 
   // MicroStrategy Tutorial
   const projectId = 'B19DEDCC11D4E0EFC000EB9495D0F44F';
+  mstrClient.setProjectId(projectId);
 
   const dossierId = 'C103CFA847057FC9FCF772ADF9092BD9';
 
   // APIs are grouped by topic
   const DossierAPI = mstrClient.dossiersAndDocuments;
-  const dossierDefn = await DossierAPI.getDossierDefinition(dossierId, projectId);
+  const dossierDefn = await DossierAPI.getDossierDefinition(dossierId);
 })();
 ```
 
