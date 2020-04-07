@@ -1,7 +1,7 @@
 const mstr = require('../../lib/mstr.js');
 
 (async ()=> {
-  const baseUrl = 'http://aps-tsiebler-vm:8080/11.1GALibrary/api';
+  const baseUrl = 'http://aps-tsiebler-vm:8080/2020u1Library/api';
   const mstrApi = new mstr.REST({
     baseUrl: baseUrl
   });
@@ -27,7 +27,7 @@ const mstr = require('../../lib/mstr.js');
     // const instanceInfo = await ReportsAPI.createReportInstance(objectId);
     // console.log('res: ', JSON.stringify(instanceInfo, null, 2));
 
-    const instanceId = instanceInfo.instanceId;
+    // const instanceId = instanceInfo.instanceId;
     // const instance = await ReportsAPI.getReportInstance(objectId, instanceId);
     // console.log('res: ', JSON.stringify(instance, null, 2));
 
