@@ -22,14 +22,14 @@ const mstr = require('../../lib/mstr.js');
 
   try {
     const defn = await ReportsAPI.getReportDefinition(objectId);
-    console.log('res: ', JSON.stringify(defn, null, 2));
+    // console.log('res1: ', JSON.stringify(defn, null, 2));
 
-    // const instanceInfo = await ReportsAPI.createReportInstance(objectId);
-    // console.log('res: ', JSON.stringify(instanceInfo, null, 2));
+    const instanceInfo = await ReportsAPI.createReportInstance(objectId);
+    // console.log('res2: ', JSON.stringify(instanceInfo, null, 2));
 
-    // const instanceId = instanceInfo.instanceId;
-    // const instance = await ReportsAPI.getReportInstance(objectId, instanceId);
-    // console.log('res: ', JSON.stringify(instance, null, 2));
+    const instanceId = instanceInfo.instanceId;
+    const instance = await ReportsAPI.getReportInstance(objectId, instanceId);
+    console.log('res3: ', JSON.stringify(instance, null, 2));
 
     console.log('EOF');
   } catch (e) {
