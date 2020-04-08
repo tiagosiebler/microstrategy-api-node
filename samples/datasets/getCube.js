@@ -1,7 +1,7 @@
 const mstr = require('../../lib/mstr.js');
 
 (async ()=> {
-  const baseUrl = 'http://aps-tsiebler-vm:8080/11.1GALibrary/api';
+  const baseUrl = 'http://aps-tsiebler-vm:8080/2020u1Library/api';
   const mstrApi = new mstr.REST({
     baseUrl: baseUrl
   });
