@@ -19,7 +19,7 @@ const mstr = require('../../lib/mstr.js');
   const ObjectManagementAPI = mstrApi.objectManagement;
 
   const objectID = '6DBBD2404562BC0C580E1B8B18DAEAA8';
-  const type = 8;
+  const type = 8; // Integer from EnumDSSXMLObjectTypes
 
   const copyObjecctBody = {
     name: 'Copied from NPM Package',
@@ -40,7 +40,6 @@ const mstr = require('../../lib/mstr.js');
     console.log(objectInfo);
 
     await ObjectManagementAPI.deleteObject(newObjectId, type);
-
   } catch (e) {
     console.error(e);
   }
