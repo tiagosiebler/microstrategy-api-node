@@ -1,0 +1,21 @@
+# This workflow will update pull requests to add context
+
+on: pull_request
+name: PR Updated
+
+jobs:
+  history:
+    name: Pull Request Body
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    if: github.event.pull_request.head.user.id == github.event.pull_request.base.user.id
+    steps:
+      - uses: technote-space/load-config-action@v1
+        with:
+          CONFIG_FILENAME: workflow-settings.json
+      - uses: technote-space/pr-commit-body-action@v1
+        with:
+          EXCLUDE_MESSAGES: ${{ env.EXCLUDE_MESSAGES }}
+          TITLE: ${{ env.PR_BODY_TITLE }}
+          LINK_ISSUE_KEYWORD: ${{ (startsWith(github.head_ref, 'master') && ('closes' || 'fixes' || 'resolves')) || '' }}
+          FILTER_PR: true
