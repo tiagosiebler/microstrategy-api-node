@@ -23,19 +23,25 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: MontyD/package-json-updated-action
+        id: version-updated
+        with:
+          path: package.json
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Check that package.json has been updated, since we can't publish over old versions
-      - name: Check package version
-        uses: technote-space/package-version-check-action@v1
+      - uses: actions/checkout@v2
+        if: steps.version-updated.outputs.has-updated
 
       - uses: actions/setup-node@v1
+        if: steps.version-updated.outputs.has-updated
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
 
       #- run: npm ci
       - run: npm publish
+        if: steps.version-updated.outputs.has-updated
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
