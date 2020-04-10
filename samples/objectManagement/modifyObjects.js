@@ -21,7 +21,7 @@ const mstr = require('../../lib/mstr.js');
   const objectID = '6DBBD2404562BC0C580E1B8B18DAEAA8';
   const type = 8; // Integer from EnumDSSXMLObjectTypes
 
-  const copyObjecctBody = {
+  const copyObjectBody = {
     name: 'Copied from NPM Package',
     folderId: 'B0923C34402DF0DFB685C7B398E0636A'
   }
@@ -31,7 +31,7 @@ const mstr = require('../../lib/mstr.js');
   };
 
   try {
-    const newObject = await ObjectManagementAPI.copyObject(objectID, type, copyObjecctBody);
+    const newObject = await ObjectManagementAPI.copyObject(objectID, type, copyObjectBody);
     const newObjectId = newObject.id;
     console.log('New Object ID: ', newObjectId);
 
