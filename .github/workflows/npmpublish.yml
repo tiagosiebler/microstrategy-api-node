@@ -9,17 +9,6 @@ on:
       - master
 
 jobs:
-  # Check that package.json has been updated, since we can't publish over old versions
-  checkVersion:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Check package version
-        uses: technote-space/package-version-check-action@v1
-        with:
-          BRANCH_PREFIX: release/
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -35,10 +24,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      # Check that package.json has been updated, since we can't publish over old versions
+      - name: Check package version
+        uses: technote-space/package-version-check-action@v1
+
       - uses: actions/setup-node@v1
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
+
       #- run: npm ci
       - run: npm publish
         env:
