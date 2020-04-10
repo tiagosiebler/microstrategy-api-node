@@ -1,4 +1,6 @@
-# MicroStrategy REST API [![npm version](https://img.shields.io/npm/v/microstrategy.svg)][1] [![npm size](https://img.shields.io/bundlephobia/min/microstrategy.svg)][1] [![npm downloads](https://img.shields.io/npm/dt/microstrategy.svg)][1] ![Publish to NPM](https://github.com/tiagosiebler/microstrategy-api-node/workflows/Publish%20to%20NPM/badge.svg?branch=master)
+# MicroStrategy REST API [![npm version](https://img.shields.io/npm/v/microstrategy.svg)][1] [![npm size](https://img.shields.io/bundlephobia/min/microstrategy.svg)][1] [![npm downloads](https://img.shields.io/npm/dt/microstrategy.svg)][1]
+![Publish to NPM](https://github.com/tiagosiebler/microstrategy-api-node/workflows/Publish%20to%20NPM/badge.svg?branch=master)
+
 A light npm wrapper around some of the MicroStrategy REST API endpoints.
 
 ## Dependencies
