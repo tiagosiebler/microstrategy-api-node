@@ -4,10 +4,22 @@
 name: Publish to NPM
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - master
 
 jobs:
+  # Check that package.json has been updated, since we can't publish over old versions
+  checkVersion:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check package version
+        uses: technote-space/package-version-check-action@v1
+        with:
+          BRANCH_PREFIX: release/
+
   build:
     runs-on: ubuntu-latest
     steps:

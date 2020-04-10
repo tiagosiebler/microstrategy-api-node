@@ -75,4 +75,4 @@ node samples/getDossier.js
 ## Missing APIs
 If you notice any missing endpoints, please contribute with a PR to enhance this module.
 
-[1]: (https://www.npmjs.com/package/microstrategy)
+[1]: https://www.npmjs.com/package/microstrategy
