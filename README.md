@@ -1,4 +1,4 @@
-# MicroStrategy REST API [![npm version](https://img.shields.io/npm/v/microstrategy.svg) ![npm size](https://img.shields.io/bundlephobia/min/microstrategy.svg) ![npm downloads](https://img.shields.io/npm/dt/microstrategy.svg)](https://www.npmjs.com/package/microstrategy)
+# MicroStrategy REST API [![npm version](https://img.shields.io/npm/v/microstrategy.svg)][1] [![npm size](https://img.shields.io/bundlephobia/min/microstrategy.svg)][1] [![npm downloads](https://img.shields.io/npm/dt/microstrategy.svg)][1] ![Publish to NPM](https://github.com/tiagosiebler/microstrategy-api-node/workflows/Publish%20to%20NPM/badge.svg?branch=master)
 A light npm wrapper around some of the MicroStrategy REST API endpoints.
 
 ## Dependencies
@@ -74,3 +74,5 @@ node samples/getDossier.js
 
 ## Missing APIs
 If you notice any missing endpoints, please contribute with a PR to enhance this module.
+
+[1]: (https://www.npmjs.com/package/microstrategy)
