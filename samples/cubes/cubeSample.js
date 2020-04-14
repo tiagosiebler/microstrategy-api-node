@@ -17,12 +17,12 @@ const mstr = require('../../lib/mstr.js');
   mstrApi.setProjectId(projectId);
 
   const objectId = '260319644637B3DAE447948C61FA7045';
-  const cubeIds = ['12341241','8567875685','092348092384'];
+  const cubeIds = ['260319644637B3DAE447948C61FA7045'];
 
   const CubesAPI = mstrApi.cubes;
 
   try {
-    const cubeInfo = CubesAPI.publishCube(objectId);
+    const cubeInfo = await CubesAPI.getCubesInfo(cubeIds);
     console.log(cubeInfo);
   } catch (e) {
     console.error(e);
