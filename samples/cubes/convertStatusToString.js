@@ -1,96 +1,78 @@
+let EnumDSSCubeStates = require('./EnumDSSCubeStates');
+
 module.exports = (status) => {
-  const EnumDSSCubeStates = {
-    DssCubeReserved : 0,
-    DssCubeProcessing : 1,
-    DssCubeActive : 2,
-    DssCubePersisted : 4,
-    DssCubeInfoDirty : 8,
-    DssCubeDirty : 16,
-    DssCubeLoaded : 32,
-    DssCubeReady : 64,
-    DssCubeLoadPending : 128,
-    DssCubeUnloadPending : 256,
-    DssCubePendingForEngine : 512,
-    DssCubeImported : 1024,
-    DssCubeForeign : 2048,
-    DssCubeRemapDirty : 4096,
-    DssCubeUpgrade : 8192,
-    DssCubeEmma : 16384,
-    DssCubeFromMSTRFile : 32768,
-    DssCubeHidden : 65536
-  }
   let results = {};
-  if(status>=EnumDSSCubeStates.DssCubeHidden){
+  if(status>=EnumDSSCubeStates().DssCubeHidden){
     results.hidden = true;
-    status -= EnumDSSCubeStates.DssCubeHidden;
+    status -= EnumDSSCubeStates().DssCubeHidden;
   }
-  if(status>=EnumDSSCubeStates.DssCubeFromMSTRFile){
+  if(status>=EnumDSSCubeStates().DssCubeFromMSTRFile){
     results.fromMSTRFile = true;
-    status -= EnumDSSCubeStates.DssCubeFromMSTRFile;
+    status -= EnumDSSCubeStates().DssCubeFromMSTRFile;
   } 
-  if(status>=EnumDSSCubeStates.DssCubeEmma){
+  if(status>=EnumDSSCubeStates().DssCubeEmma){
     results.emma = true;
-    status -= EnumDSSCubeStates.DssCubeEmma;
+    status -= EnumDSSCubeStates().DssCubeEmma;
   } 
-  if(status>=EnumDSSCubeStates.DssCubeUpgrade){
+  if(status>=EnumDSSCubeStates().DssCubeUpgrade){
     results.upgrade = true;
-    status -= EnumDSSCubeStates.DssCubeUpgrade;
+    status -= EnumDSSCubeStates().DssCubeUpgrade;
   } 
-  if(status>=EnumDSSCubeStates.DssCubeRemapDirty){
+  if(status>=EnumDSSCubeStates().DssCubeRemapDirty){
     results.remapDirty = true;
-    status -= EnumDSSCubeStates.DssCubeRemapDirty;
+    status -= EnumDSSCubeStates().DssCubeRemapDirty;
   } 
-  if(status>=EnumDSSCubeStates.DssCubeForeign){
+  if(status>=EnumDSSCubeStates().DssCubeForeign){
     results.foreign = true;
-    status -= EnumDSSCubeStates.DssCubeForeign;
+    status -= EnumDSSCubeStates().DssCubeForeign;
   } 
-  if(status>=EnumDSSCubeStates.DssCubeImported){
+  if(status>=EnumDSSCubeStates().DssCubeImported){
     results.imported = true;
-    status -= EnumDSSCubeStates.DssCubeImported;
+    status -= EnumDSSCubeStates().DssCubeImported;
   } 
-  if(status>=EnumDSSCubeStates.DssCubePendingForEngine){
+  if(status>=EnumDSSCubeStates().DssCubePendingForEngine){
     results.pendingForEngine = true;
-    status -= EnumDSSCubeStates.DssCubePendingForEngine;
+    status -= EnumDSSCubeStates().DssCubePendingForEngine;
   } 
-  if(status>=EnumDSSCubeStates.DssCubeUnloadPending){
+  if(status>=EnumDSSCubeStates().DssCubeUnloadPending){
     results.unloadPending = true;
-    status -= EnumDSSCubeStates.DssCubeUnloadPending;
+    status -= EnumDSSCubeStates().DssCubeUnloadPending;
   } 
-  if(status>=EnumDSSCubeStates.DssCubeLoadPending){
+  if(status>=EnumDSSCubeStates().DssCubeLoadPending){
     results.loadPending = true;
-    status -= EnumDSSCubeStates.DssCubeLoadPending;
+    status -= EnumDSSCubeStates().DssCubeLoadPending;
   } 
-  if(status>=EnumDSSCubeStates.DssCubeReady){
+  if(status>=EnumDSSCubeStates().DssCubeReady){
     results.ready = true;
-    status -= EnumDSSCubeStates.DssCubeReady;
+    status -= EnumDSSCubeStates().DssCubeReady;
   } 
-  if(status>=EnumDSSCubeStates.DssCubeLoaded){
+  if(status>=EnumDSSCubeStates().DssCubeLoaded){
     results.loaded = true;
-    status -= EnumDSSCubeStates.DssCubeLoaded;
+    status -= EnumDSSCubeStates().DssCubeLoaded;
   } 
-  if(status>=EnumDSSCubeStates.DssCubeDirty){
+  if(status>=EnumDSSCubeStates().DssCubeDirty){
     results.dirty = true;
-    status -= EnumDSSCubeStates.DssCubeDirty;
+    status -= EnumDSSCubeStates().DssCubeDirty;
   } 
-  if(status>=EnumDSSCubeStates.DssCubeInfoDirty){
+  if(status>=EnumDSSCubeStates().DssCubeInfoDirty){
     results.infoDirty = true;
-    status -= EnumDSSCubeStates.DssCubeInfoDirty;
+    status -= EnumDSSCubeStates().DssCubeInfoDirty;
   } 
-  if(status>=EnumDSSCubeStates.DssCubePersisted){
+  if(status>=EnumDSSCubeStates().DssCubePersisted){
     results.persisted = true;
-    status -= EnumDSSCubeStates.DssCubePersisted;
+    status -= EnumDSSCubeStates().DssCubePersisted;
   } 
-  if(status>=EnumDSSCubeStates.DssCubeActive){
+  if(status>=EnumDSSCubeStates().DssCubeActive){
     results.active = true;
-    status -= EnumDSSCubeStates.DssCubeActive;
+    status -= EnumDSSCubeStates().DssCubeActive;
   } 
-  if(status>=EnumDSSCubeStates.DssCubeProcessing){
+  if(status>=EnumDSSCubeStates().DssCubeProcessing){
     results.processing = true;
-    status -= EnumDSSCubeStates.DssCubeProcessing;
+    status -= EnumDSSCubeStates().DssCubeProcessing;
   } 
-  if(status>=EnumDSSCubeStates.DssCubeReserved){
+  if(status>=EnumDSSCubeStates().DssCubeReserved){
     results.reserved = true;
-    status -= EnumDSSCubeStates.DssCubeReserved;
+    status -= EnumDSSCubeStates().DssCubeReserved;
   }
   return results;
 }
