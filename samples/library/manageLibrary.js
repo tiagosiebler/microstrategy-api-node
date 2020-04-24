@@ -1,7 +1,7 @@
 const mstr = require("../../lib/mstr.js");
 
 (async () => {
-  const baseUrl = "http://10.27.72.72:8080/2020u1Library/api";
+  const baseUrl = "http://localhost:8080/112Library/api";
   const mstrApi = new mstr.REST({
     baseUrl: baseUrl,
   });
