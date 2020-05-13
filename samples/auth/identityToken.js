@@ -6,7 +6,7 @@ const mstr = require('../../lib/mstr.js');
     baseUrl: baseUrl
   });
 
-    const loginRequest = {
+  const loginRequest = {
     username: 'Administrator',
     password: '',
     loginMode: 1

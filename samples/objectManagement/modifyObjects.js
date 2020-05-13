@@ -24,7 +24,7 @@ const mstr = require('../../lib/mstr.js');
   const copyObjectBody = {
     name: 'Copied from NPM Package',
     folderId: 'B0923C34402DF0DFB685C7B398E0636A'
-  }
+  };
 
   const updateObjectBody = {
     name: 'Updated from NPM Package'

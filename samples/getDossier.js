@@ -39,7 +39,7 @@ const mstr = require('../lib/mstr.js');
             instanceId: dossierInstanceId,
             chapterKey: chapterKey,
             visualizationKey: visualizationKey
-          }
+          };
 
           const visResult = await DossierAPI.getDossierVisualization(params);
           console.log('visResult: ', JSON.stringify(visResult, null, 2));

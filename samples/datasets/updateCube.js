@@ -25,12 +25,12 @@ const mstr = require('../../lib/mstr.js');
 
     const replacementData = [
       {
-        "ID": "Example3",
-        "SALES": 412312.222
+        'ID': 'Example3',
+        'SALES': 412312.222
       },
       {
-        "ID": "Example4",
-        "SALES": 32321.123
+        'ID': 'Example4',
+        'SALES': 32321.123
       }
     ];
 
@@ -50,7 +50,7 @@ const mstr = require('../../lib/mstr.js');
         }
       ],
       data: rawDataBase64
-    }
+    };
 
     console.log('Replacing dataset with body: ', JSON.stringify(datasetBody, null, 2));
 
