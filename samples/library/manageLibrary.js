@@ -1,7 +1,8 @@
 const mstr = require("../../lib/mstr.js");
 
 (async () => {
-  const baseUrl = "http://localhost:8080/112Library/api";
+  const baseUrl =
+    "http://sup-w-003364.labs.microstrategy.com:8080/MicroStrategyLibrary/api";
   const mstrApi = new mstr.REST({
     baseUrl: baseUrl,
   });
@@ -18,6 +19,6 @@ const mstr = require("../../lib/mstr.js");
   const fields = "name,id";
   //const outputFlag = "DEFAULT";
   const libraryAPI = mstrApi.library;
-  const libraryResult = await libraryAPI.getLibrary(fields);
+  const libraryResult = await libraryAPI.getLibrary(fields, "FILTER_TOC");
   console.log(JSON.stringify(libraryResult, null, 2));
 })();
