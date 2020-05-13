@@ -69,6 +69,15 @@ http://example.com/MicroStrategyLibrary/api-docs
 For public REST API documentation from the MicroStrategy demo environment, refer to the following URL:
 https://demo.microstrategy.com/MicroStrategyLibrary/api-docs
 
+#### More REST API Samples
+Refer to the [samples](./samples/) folder for more samples tested in node.js. These can be directly executed using the node command:
+```bash
+node samples/getDossier.js
+```
+
+#### Missing REST APIs
+If you notice any missing endpoints, please contribute with a PR to enhance this module.
+
 ### MicroStrategy Task API
 This module includes a minimal wrapper to execute tasks via the Task API.
 
@@ -104,14 +113,5 @@ const mstr = require('microstrategy');
   }
 })();
 ```
-
-## More REST API Samples
-Refer to the [samples](./samples/) folder for more samples tested in node.js. These can be directly executed using the node command:
-```bash
-node samples/getDossier.js
-```
-
-## Missing APIs
-If you notice any missing endpoints, please contribute with a PR to enhance this module.
 
 [1]: https://www.npmjs.com/package/microstrategy
