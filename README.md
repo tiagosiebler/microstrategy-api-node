@@ -18,7 +18,7 @@ npm i microstrategy --save
 yarn add microstrategy
 ```
 
-## Getting Started
+## MicroStrategy REST API
 - Import the module and create a new instance of the REST client.
 - Provide a URL to your MicroStrategy Library REST API via the baseUrl parameter.
 - Login & Logout methods are exposed on the REST client. Other methods are grouped by topic.
@@ -28,7 +28,7 @@ yarn add microstrategy
 ```javascript
 const mstr = require('microstrategy');
 
-(async ()=> {
+(async () => {
   const baseUrl = 'http://aps-tsiebler-vm:8080/11.1GALibrary/api';
   const mstrClient = new mstr.REST({
     baseUrl: baseUrl
@@ -39,7 +39,6 @@ const mstr = require('microstrategy');
     password: '',
     loginMode: 1
   });
-
 
   // MicroStrategy Tutorial
   const projectId = 'B19DEDCC11D4E0EFC000EB9495D0F44F';
@@ -53,7 +52,7 @@ const mstr = require('microstrategy');
 })();
 ```
 
-## REST API Documentation
+### REST API Documentation
 These methods are simpler wrappers around the APIs exposed by the MicroStrategy Library REST API server. For full documentation, refer to your MicroStrategy Library's `api-docs` endpoint.
 
 For example, if your MicroStrategy Library environment has the following URL:
@@ -69,13 +68,49 @@ http://example.com/MicroStrategyLibrary/api-docs
 For public REST API documentation from the MicroStrategy demo environment, refer to the following URL:
 https://demo.microstrategy.com/MicroStrategyLibrary/api-docs
 
-## More Samples
+### More REST API Samples
 Refer to the [samples](./samples/) folder for more samples tested in node.js. These can be directly executed using the node command:
 ```bash
 node samples/getDossier.js
 ```
 
-## Missing APIs
+### Missing REST APIs
 If you notice any missing endpoints, please contribute with a PR to enhance this module.
+
+## MicroStrategy Task API
+This module includes a minimal wrapper to execute tasks via the Task API.
+
+- Import the module and create a new instance of the TaskAPI client.
+- Provide a URL to your MicroStrategy Web taskProc via the taskProcUrl parameter.
+- Build a request via the `executeTask()` method.
+
+
+```javascript
+const mstr = require('microstrategy');
+
+(async () => {
+  const taskApi = new mstr.TaskAPI({
+    taskProcUrl: 'http://aps-tsiebler-vm:8080/2020u1/servlet/taskProc'
+  });
+
+  const taskId = 'login';
+
+  // Collect these from the task builder page
+  const taskParameters = {
+    server: 'aps-tsiebler-vm',
+    project: 'MicroStrategy Tutorial',
+    userid: 'administrator',
+    password: ''
+  };
+
+  // The response includes { body, headers, status, statusText }
+  try {
+    const res = await taskApi.executeTask(taskId, taskParameters);
+    console.log('task response: ', res.body);
+  } catch (e) {
+    console.error(e);
+  }
+})();
+```
 
 [1]: https://www.npmjs.com/package/microstrategy
