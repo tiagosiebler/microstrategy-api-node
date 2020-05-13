@@ -18,16 +18,16 @@ const mstr = require('../../lib/mstr.js');
     username: 'npmTest',
     fullName: 'NPM Test User',
     description: 'Created through NPM package'
-  }
+  };
   const updateUserBody = {
     operationList: [
       {
-        "op": "replace",
-        "path": "/description",
-        "value": "Updated description through NPM package"
+        'op': 'replace',
+        'path': '/description',
+        'value': 'Updated description through NPM package'
       }
     ]
-  }
+  };
 
   try {
     const userList = await UserManagementAPI.getUsers();

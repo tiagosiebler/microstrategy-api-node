@@ -25,7 +25,7 @@ const convertStatusToString = require('./convertStatusToString');
   try {
     const cubeStatus = await CubesAPI.getStatus(cubeID);
     const states = convertStatusToString(cubeStatus);
-    if(!states.ready){
+    if (!states.ready){
       await CubesAPI.publishCube(cubeID);
     }
 

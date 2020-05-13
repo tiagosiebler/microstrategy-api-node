@@ -24,12 +24,12 @@ const mstr = require('../../lib/mstr.js');
 
     const rawStartingData = [
       {
-        "ID": "Example1",
-        "SALES": 12345.222
+        'ID': 'Example1',
+        'SALES': 12345.222
       },
       {
-        "ID": "Example2",
-        "SALES": 51231.123
+        'ID': 'Example2',
+        'SALES': 51231.123
       }
     ];
 
@@ -81,7 +81,7 @@ const mstr = require('../../lib/mstr.js');
       attributes: newAttributes,
       metrics: newMetrics,
       folderId: targetFolderId
-    }
+    };
 
     console.log('Creating new dataset with body: ', JSON.stringify(newDatasetBody, null, 2));
 
