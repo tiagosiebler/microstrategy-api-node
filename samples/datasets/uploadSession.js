@@ -3,7 +3,7 @@ const mstr = require('../../lib/mstr.js');
 // Simple util function that resolves a promise after a timeout in MS;
 const promiseSleep = timeoutMS => {
   return new Promise(resolve => setTimeout(resolve, timeoutMS));
-}
+};
 
 /*
   Upload Session Sample - Multi-Table Dataset
@@ -117,7 +117,7 @@ const promiseSleep = timeoutMS => {
     console.log(`Multi-table dataset created with result: `, datasetCreationResult);
 
     const datasetId = datasetCreationResult.id;
-    const datasetName = datasetCreationResult.name;
+    // const datasetName = datasetCreationResult.name;
 
     // Prepare upload session to add data to our new dataset:
     const targetTableName = 'EXAMPLE_TABLE_2';
@@ -143,7 +143,13 @@ const promiseSleep = timeoutMS => {
     rows.push(['2', 3]);
     rows.push(['3', 92]);
     rows.push(['4', 123]);
-    const uploadResponse1 = await DatasetsAPI.uploadDataToUploadSession(datasetId, uploadSessionId, targetTableName, uploadChunkIndex, rows);
+    const uploadResponse1 = await DatasetsAPI.uploadDataToUploadSession(
+      datasetId,
+      uploadSessionId,
+      targetTableName,
+      uploadChunkIndex,
+      rows
+    );
     console.log('uploadResponse1: ', uploadResponse1);
 
     // Upload more data
@@ -153,14 +159,21 @@ const promiseSleep = timeoutMS => {
     moreRows.push(['6', 1]);
     moreRows.push(['7', 12]);
     moreRows.push(['8', 113]);
-    const uploadResponse2 = await DatasetsAPI.uploadDataToUploadSession(datasetId, uploadSessionId, targetTableName, uploadChunkIndex, moreRows);
+    const uploadResponse2 = await DatasetsAPI.uploadDataToUploadSession(
+      datasetId,
+      uploadSessionId,
+      targetTableName,
+      uploadChunkIndex,
+      moreRows
+    );
     console.log('uploadResponse2: ', uploadResponse2);
 
     // Finished uploading data, publish cube to prepare for use:
     const publishResult = await DatasetsAPI.publishUploadSessionDataset(datasetId, uploadSessionId);
     console.log('Publishing updated cube: ', publishResult);
 
-    // Publishing can take some time - this simple loop blocks the thread to check every second (up to 30 retries) if the cube is published (status == 1)
+    // Publishing can take some time
+    // This simple loop blocks the thread to check every second (up to 30 retries) whether the cube is published (status == 1)
     let publishSuccess = false;
     for (let publishPollAttempts = 0;publishPollAttempts < 30;publishPollAttempts++) {
       const uploadStatusResponse = await DatasetsAPI.getUploadSessionStatus(datasetId, uploadSessionId);
