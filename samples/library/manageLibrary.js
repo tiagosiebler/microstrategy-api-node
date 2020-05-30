@@ -21,4 +21,5 @@ const mstr = require("../../lib/mstr.js");
   const libraryAPI = mstrApi.library;
   const libraryResult = await libraryAPI.getLibrary(fields, "FILTER_TOC");
   console.log(JSON.stringify(libraryResult, null, 2));
+  console.log("Finished showing Library");
 })();
