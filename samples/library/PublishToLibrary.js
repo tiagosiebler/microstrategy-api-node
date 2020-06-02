@@ -40,7 +40,7 @@ const mstr = require("../../lib/mstr");
         }
 
         console.log('Publishing to Library with body: ' , JSON.stringify(body, null, 2 ));
-        const response = await libraryAPI.publishToLibrary(projectId, body);
+        const response = await libraryAPI.publishObject(projectId, body);
     } catch (e){
         console.error(e);
     }

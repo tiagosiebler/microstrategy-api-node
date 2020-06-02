@@ -17,7 +17,7 @@ const mstr = require("../../lib/mstr");
     mstrApi.setProjectId(projectId);
 
     //Document id:
-    const documentId =  'C866FC0B417F8BD4DBBC07BE57C83413';
+    const objectId =  'C866FC0B417F8BD4DBBC07BE57C83413';
 
     //Fields to retrieve
     //const fields = 'id,elements';
@@ -25,9 +25,9 @@ const mstr = require("../../lib/mstr");
     const libraryAPI = mstrApi.library;
 
     try{
-        const documentResult = await libraryAPI.getDocument(projectId, documentId, fields);
-    console.log(JSON.stringify(documentResult, null, 2));
-    console.log("Finished getting document");
+        const objectResult = await libraryAPI.getObject(projectId, objectId, fields);
+    console.log(JSON.stringify(objectResult, null, 2));
+    console.log("Finished getting object");
     } catch (e){
         console.error(e);
     }
