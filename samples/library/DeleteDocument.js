@@ -1,4 +1,4 @@
-const mstr = require("../../lib/mstr");
+const mstr = require('../../lib/mstr');
 
 (async() => {
     const baseUrl = 'http://10.23.1.124:8080/MicroStrategyLibrary/api';
@@ -13,25 +13,23 @@ const mstr = require("../../lib/mstr");
     });
 
     // MicroStrategy Tutorial
-    const projectId = "B19DEDCC11D4E0EFC000EB9495D0F44F";
+    const projectId = 'B19DEDCC11D4E0EFC000EB9495D0F44F';
     mstrApi.setProjectId(projectId);
 
     //Document id:
     const objectId =  'C866FC0B417F8BD4DBBC07BE57C83413';
 
-    //Fields to retrieve
-    const fields = 'id,elements';
     const libraryAPI = mstrApi.library;
 
-    try{
-        const objectResult = await libraryAPI.getObject(projectId, objectId, fields);
-        console.log(JSON.stringify(objectResult, null, 2));
-        console.log("Finished getting object");
-    } catch (e){
+    try {
+        console.log("Deleting object from Library");
+        const result = await libraryAPI.deleteObject(projectId, objectId);
+        console.log(JSON.stringify(result, null, 2));
+        console.log(('Object deleted.'));
+    } catch (e) {
         console.error(e);
     }
-    
-await mstrApi.logout();
+
+    await mstrApi.logout();
 
 })();
-
