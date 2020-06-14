@@ -17,14 +17,13 @@ const mstr = require('../../lib/mstr');
   mstrApi.setProjectId(projectId);
 
   //Document id:
-  const objectId = '51BF187841C48CD995DFC4A853941F13';
+  const objectId = 'C866FC0B417F8BD4DBBC07BE57C83413';
 
   const libraryAPI = mstrApi.library;
 
   try {
     console.log('Deleting object from Library');
-    const result = await libraryAPI.deleteObject(projectId, objectId);
-    console.log(JSON.stringify(result, null, 2));
+    const result = await libraryAPI.deleteObject(objectId);
     console.log('Object deleted.');
   } catch (e) {
     console.error(e);

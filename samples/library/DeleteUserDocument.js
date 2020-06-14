@@ -29,8 +29,8 @@ const mstr = require('../../lib/mstr');
       `Deleting object with ID: ${objectId} from user with id: ${userId}`
     );
     const result = await libraryAPI.deleteUserObject(
-      projectId,
       objectId,
+      projectId,
       userId
     );
     console.log(JSON.stringify(result, null, 2));
