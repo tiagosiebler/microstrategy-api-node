@@ -21,4 +21,8 @@ const mstr = require('../../lib/mstr.js');
   const libraryResult = await libraryAPI.getLibrary(outputFlag, fields);
   console.log(JSON.stringify(libraryResult, null, 2));
   console.log('Finished showing Library');
+  console.log(
+    'Finished showing Library: ',
+    JSON.stringify(libraryResult, null, 2)
+  );
 })();

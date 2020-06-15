@@ -39,11 +39,9 @@ const mstr = require('../../lib/mstr');
       isInstance: false,
     };
 
-    console.log(
-      'Publishing to Library with body: ',
-      JSON.stringify(body, null, 2)
-    );
+    console.log('Publishing to Library with body: ');
     const response = await libraryAPI.publishObject(body);
+    console.log('Object published to Library.');
   } catch (e) {
     console.error(e);
   }

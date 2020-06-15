@@ -24,7 +24,7 @@ const mstr = require('../../lib/mstr');
   try {
     console.log('Deleting object from Library');
     const result = await libraryAPI.deleteObject(objectId);
-    console.log('Object deleted.');
+    console.log('Object deleted: ', objectId);
   } catch (e) {
     console.error(e);
   }

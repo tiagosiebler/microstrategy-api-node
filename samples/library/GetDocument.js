@@ -29,8 +29,10 @@ const mstr = require('../../lib/mstr');
       projectId
       //fields
     );
-    console.log(JSON.stringify(objectResult, null, 2));
-    console.log('Finished getting object');
+    console.log(
+      'Finished getting object: ',
+      JSON.stringify(objectResult, null, 2)
+    );
   } catch (e) {
     console.error(e);
   }
