@@ -1,0 +1,20 @@
+METHOD: Library -> GetDocument(objectId, projectId, fields);
+
+1.-
+input:
+projectId: B19DEDCC11D4E0EFC000EB9495D0F44F
+document ID: C866FC0B417F8BD4DBBC07BE57C83413
+fields: 
+
+Response:
+{
+  "id": "C866FC0B417F8BD4DBBC07BE57C83413",
+  "recipients": [
+    {
+      "description": "",
+      "name": "Administrator",
+      "subtype": 8704,
+      "id": "54F3D26011D2896560009A8E67019608"
+    }
+  ]
+}
