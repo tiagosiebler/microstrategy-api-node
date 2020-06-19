@@ -1,7 +1,7 @@
 const RestTopic = require('../../lib/restAPIs/library');
 //jest.mock('../../lib/restAPIs/library');
 
-describe('Library API tests', () => {
+describe.skip('Library API tests', () => {
   describe('_getBase()', () => {
     test('it should return library as topic', () => {
       const library = new RestTopic();
