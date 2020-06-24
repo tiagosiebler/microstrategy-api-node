@@ -1,6 +1,17 @@
-export const mockGetProjectHeader = jest.fn();
-const mockRestUtil = jest.fn().mockImplementation(() => {
-  return { getProjectHeader: mockGetProjectHeader };
-});
+module.exports = class RestUtil {
+  constructor() {
+    console.log('This is the constructor mock');
+  }
 
-export default mockRestUtil;
+  getProjectHeader() {
+    return 'hola';
+  }
+
+  _makeRequest() {
+    return 'makeRequest_response';
+  }
+
+  throwIfFailed() {
+    return { data: 'hola' };
+  }
+};
