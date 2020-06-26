@@ -4,7 +4,7 @@
   "description": "A node.js wrapper for the MicroStrategy REST API & Task API",
   "main": "./lib/mstr.js",
   "scripts": {
-    "test": "jest --config=microstrategy-api-node/jest-config.js",
+    "test": "jest",
     "testlogin": "node samples/login.js"
   },
   "repository": {

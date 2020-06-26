@@ -12,13 +12,17 @@
       "program": "${file}"
     },
     {
+      "name": "Debug Jest Tests",
       "type": "node",
       "request": "launch",
-      "name": "MSTR Test current",
-      "program": "${workspaceFolder}/node_modules/.bin/jest",
-      "args": ["${fileBasenameNoExtension}", "--config", "jest.config.js"],
+      "runtimeArgs": [
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/.bin/jest",
+        "--runInBand"
+      ],
       "console": "integratedTerminal",
-      "disableOptimisticBPs": true
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
     },
     {
       "type": "node",
@@ -26,8 +30,7 @@
       "name": "HOME Test current",
       "program": "${workspaceFolder}/mstr-node-api/node_modules/.bin/jest",
       "args": ["${fileBasenameNoExtension}", "--config", "jest.config.js"],
-      "console": "integratedTerminal",
-      "disableOptimisticBPs": true
+      "console": "integratedTerminal"
     }
   ]
 }
