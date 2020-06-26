@@ -5,7 +5,10 @@
   "main": "./lib/mstr.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "testlogin": "node samples/login.js"
+    "testlogin": "node samples/login.js",
+    "webpack-watch": "webpack --watch",
+    "webpack-app:dev": "webpack --config webpack.config.js",
+    "webpack-app:prod": "webpack --config webpack.config.js --env.prod"
   },
   "repository": {
     "type": "git",
@@ -31,9 +34,14 @@
     "querystring": "^0.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "babel-loader": "^8.1.0",
     "eslint": "^7.0.0",
     "eslint-plugin-jest": "^23.11.0",
     "eslint-plugin-prettier": "^3.1.3",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
   }
 }
