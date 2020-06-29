@@ -18,3 +18,12 @@ Response:
     }
   ]
 }
+
+session headers
+***************
+console.log('session headers', JSON.stringify(seeSessionHeader, null, 2));
+
+session headers {
+  "X-MSTR-AuthToken": "48j7oprhas5q22hs5ptebtrel7",
+  "Cookie": "JSESSIONID=E460C5E654DE92704D345F643EF68313; Path=/MicroStrategyLibrary; HttpOnly"
+}
