@@ -33,6 +33,6 @@ describe('Testing Library API', () => {
       password: '',
       loginMode: 1,
     });
-    expect(axios.post).toHaveBeenCalled();
+    expect(axios).toHaveBeenCalled();
   });
 });
