@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>MSTR API in the browser</h1>
+
+<script src="https://cdn.jsdelivr.net/gh/tiagosiebler/microstrategy-api-node/dist/mstrapi.min.js" crossorigin="anonymous"></script>
+<!-- <script src="js/mstrapi.min.js" crossorigin="anonymous"></script> -->
+<script>
+  async function loginTest(e) {
+    const mstr = mstrapi;
+
+    const baseUrl = 'http://aps-tsiebler-vm:8080/2020u1Library/api';
+    const mstrClient = new mstrapi.REST({
+      baseUrl: baseUrl
+    });
+
+    const authResult = await mstrClient.login({
+      username: 'Administrator',
+      password: '',
+      loginMode: 1
+    });
+    console.log('authResult: ', authResult);
+
+    // MicroStrategy Tutorial
+    const projectId = 'B19DEDCC11D4E0EFC000EB9495D0F44F';
+    mstrClient.setProjectId(projectId);
+
+    const dossierId = 'C103CFA847057FC9FCF772ADF9092BD9';
+
+    // APIs are grouped by topic
+    const DossierAPI = mstrClient.dossiersAndDocuments;
+    const dossierDefn = await DossierAPI.getDossierDefinition(dossierId);
+
+    console.log('dossier: ', dossierDefn);
+  }
+</script>
+<p>This basic sample uses the dist/mstrapi.min.js bundle to use this module in the browser.</p>
+<button type="button" onclick="loginTest()">Click me to login!</button>
+
+</body>
+</html>
