@@ -4,7 +4,7 @@ module.exports = {
   entry: './lib/mstr.js',
   output: {
     filename: 'mstrapi.min.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     library: 'mstrapi',
     libraryTarget: 'var'
   },
