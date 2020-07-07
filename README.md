@@ -24,8 +24,17 @@ This module can be used on any HTML page using the bundled `dist/mstrapi.min.js`
 ```html
 <script src="https://cdn.jsdelivr.net/gh/tiagosiebler/microstrategy-api-node/dist/mstrapi.min.js" crossorigin="anonymous"></script>
 ```
-
 See [./webpack](./webpack) for documentation on the bundling process.
+
+Once loaded via the script tag, this API module can be accessed via a global object called `mstrapi`:
+```javascript
+    const baseUrl = 'http://aps-tsiebler-vm:8080/2020u1Library/api';
+    const mstrClient = new mstrapi.REST({
+      baseUrl: baseUrl
+    });
+```
+
+See [./samples/html/cdn-login.html](./samples/html/cdn-login.html) for an example.
 
 ## MicroStrategy REST API
 - Import the module and create a new instance of the REST client.
@@ -38,7 +47,7 @@ See [./webpack](./webpack) for documentation on the bundling process.
 const mstr = require('microstrategy');
 
 (async () => {
-  const baseUrl = 'http://aps-tsiebler-vm:8080/11.1GALibrary/api';
+  const baseUrl = 'http://aps-tsiebler-vm:8080/2020u1Library/api';
   const mstrClient = new mstr.REST({
     baseUrl: baseUrl
   });
