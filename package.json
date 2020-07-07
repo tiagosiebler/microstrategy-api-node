@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "testlogin": "node samples/login.js",
-    "webpack-watch": "webpack --watch",
+    "webpack-watch": "webpack --watch --config webpack.config.js",
     "webpack-app:dev": "webpack --config webpack.config.js",
     "webpack-app:prod": "webpack --config webpack.config.js --env.prod"
   },
