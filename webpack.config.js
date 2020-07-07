@@ -5,6 +5,8 @@ module.exports = {
   output: {
     filename: 'mstrapi.min.js',
     path: path.resolve(__dirname, 'dist'),
+    library: 'mstrapi',
+    libraryTarget: 'var'
   },
   module: {
     rules: [
@@ -14,11 +16,15 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: [['@babel/preset-env', {
+              'targets': {
+                'node': 'current'
+              }
+            }]]
           }
         }
       }
     ]
   },
-  mode: 'production'
+  mode: 'development'
 };
