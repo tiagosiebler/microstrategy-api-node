@@ -3,6 +3,7 @@
   "version": "0.1.12",
   "description": "A node.js wrapper for the MicroStrategy REST API & Task API",
   "main": "./lib/mstr.js",
+  "browser": "./dist/mstrapi.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "testlogin": "node samples/login.js",
