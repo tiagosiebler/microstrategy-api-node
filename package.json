@@ -5,12 +5,11 @@
   "main": "./lib/mstr.js",
   "browser": "./dist/mstrapi.min.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "testlogin": "node samples/login.js",
+    "build": "npm run webpack-dev && npm run webpack-prod",
     "webpack-watch": "webpack --watch --config webpack/webpack.config.js --env=dev",
     "webpack-dev": "webpack --config webpack/webpack.config.js --env=dev",
     "webpack-prod": "webpack --config webpack/webpack.config.js --env=prod",
-    "build": "npm run webpack-dev && npm run webpack-prod"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
