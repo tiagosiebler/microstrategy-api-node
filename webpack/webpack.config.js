@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = (env = '') => {
-  console.log('env: ', env);
   const isDev = env && env == 'dev';
   const fileName = isDev ? 'mstrapi.dev' : 'mstrapi';
 
