@@ -22,7 +22,7 @@ yarn add microstrategy
 ### HTML Pages
 This module can be used on any HTML page using the bundled `dist/mstrapi.min.js` file. Simply include this script tag on any page:
 ```html
-<script src="https://cdn.jsdelivr.net/gh/tiagosiebler/microstrategy-api-node/dist/mstrapi.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/microstrategy/dist/mstrapi.min.js" crossorigin="anonymous"></script>
 ```
 See [./webpack](./webpack) for documentation on the bundling process.
 
