@@ -8,15 +8,33 @@ A light npm wrapper around some of the MicroStrategy REST API endpoints.
 HTTP requests are handled by [axios](https://www.npmjs.com/package/axios), the promise based HTTP client for the browser and node.js.
 
 ## Installation
-### npm
+### Node Environments
+#### npm
 ```
 npm i microstrategy --save
 ```
 
-### yarn
+#### yarn
 ```
 yarn add microstrategy
 ```
+
+### HTML Pages
+This module can be used on any HTML page using the bundled `dist/mstrapi.min.js` file. Simply include this script tag on any page:
+```html
+<script src="https://cdn.jsdelivr.net/npm/microstrategy/dist/mstrapi.min.js" crossorigin="anonymous"></script>
+```
+See [./webpack](./webpack) for documentation on the bundling process.
+
+Once loaded via the script tag, this API module can be accessed via a global object called `mstrapi`:
+```javascript
+    const baseUrl = 'http://aps-tsiebler-vm:8080/2020u1Library/api';
+    const mstrClient = new mstrapi.REST({
+      baseUrl: baseUrl
+    });
+```
+
+See [./samples/html/cdn-login.html](./samples/html/cdn-login.html) for an example.
 
 ## MicroStrategy REST API
 - Import the module and create a new instance of the REST client.
@@ -29,7 +47,7 @@ yarn add microstrategy
 const mstr = require('microstrategy');
 
 (async () => {
-  const baseUrl = 'http://aps-tsiebler-vm:8080/11.1GALibrary/api';
+  const baseUrl = 'http://aps-tsiebler-vm:8080/2020u1Library/api';
   const mstrClient = new mstr.REST({
     baseUrl: baseUrl
   });
