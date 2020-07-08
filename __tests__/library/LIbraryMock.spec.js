@@ -1,38 +1,52 @@
-const mstr = require('../../lib/mstr');
-const RestConnection = require('../../lib/util/RestConnection');
-const buildCommonQuery = require('../../lib/util/buildCommonQueryParams');
 const axios = require('axios');
+const mstr = require('//lib/mstr');
 
-//jest.mock('axios');
+// const generateGrid = require('//src/game/util/generateGrid');
+const fakeURL = 'http://fakedomain:8080/something/api';
 
-describe('Testing Library API', () => {
-  it(' should have called axios', async () => {
-    const projectId = 'B19DEDCC11D4E0EFC000EB9495D0F44F';
-    const objectId = 'C866FC0B417F8BD4DBBC07BE57C83413';
-    const baseUrl = 'http://10.23.1.124:8080/MicroStrategyLibrary/api';
-    const mstrApi = new mstr.REST({ baseUrl: baseUrl });
-    mstrApi.setProjectId(projectId);
-    expect(axios.post).not.toHaveBeenCalled();
-  });
+// jest.mock('axios', () => jest.fn(() => Promise.resolve()));
+jest.mock('axios');
 
-  it(' should have called axios in login', async () => {
-    const projectId = 'B19DEDCC11D4E0EFC000EB9495D0F44F';
-    const objectId = 'C866FC0B417F8BD4DBBC07BE57C83413';
-    const mockedSessionHeaders = {
-      'X-MSTR-AuthToken': '48j7oprhas5q22hs5ptebtrel7',
-      Cookie:
-        'JSESSIONID=E460C5E654DE92704D345F643EF68313; Path=/MicroStrategyLibrary; HttpOnly',
-    };
-    const baseUrl = 'http://10.23.1.124:8080/MicroStrategyLibrary/api';
-    const mstrApi = new mstr.REST({ baseUrl: baseUrl });
-    axios.post.mockImplementationOnce(() =>
-      Promise.resolve(mockedSessionHeaders)
-    );
-    await mstrApi.login({
-      username: 'Administrator',
-      password: '',
-      loginMode: 1,
+describe('MSTR REST - Authentication', () => {
+  describe('Login', () => {
+    test('asdfafdasfasfasdfasf', async () => {
+      const mstrApi = new mstr.REST({
+        baseUrl: fakeURL,
+      });
+
+      const loginRequest = {
+        username: 'Administrator',
+        password: '',
+        loginMode: 1,
+      };
+
+      const loginRequest2 = {
+        username: 'Administrataor',
+        password: '',
+        loginMode: 1,
+      };
+
+      axios.post.mockImplementation(() => Promise.resolve({ data: {} }));
+
+      // expect(axios.post).toHaveBeenCalledWith('/web-service-url/', {data: 'a' });
+
+      try {
+        const sessionInfo = await mstrApi.login(loginRequest);
+        console.log('session', sessionInfo);
+      } catch (e) {}
+
+      const endpoint = expect.stringContaining('/api/auth/login');
+      const method = 'POST';
+      const headers = expect.objectContaining({
+        Accept: 'application/json',
+      });
+
+      expect(axios).toBeCalledWith({
+        url: endpoint,
+        method,
+        headers,
+        data: loginRequest,
+      });
     });
-    expect(axios).toHaveBeenCalled();
   });
 });
