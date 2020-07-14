@@ -1,6 +1,6 @@
 {
   "name": "microstrategy",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "A node.js wrapper for the MicroStrategy REST API & Task API",
   "main": "./lib/mstr.js",
   "browser": "./dist/mstrapi.min.js",
