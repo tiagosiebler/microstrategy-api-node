@@ -10,7 +10,8 @@
     "webpack-dev": "webpack --config webpack/webpack.config.js --env=dev",
     "webpack-prod": "webpack --config webpack/webpack.config.js --env=prod",
     "test": "jest --watchAll --config ./jest.config.js",
-    "testci": "jest --config ./jest.config.js"
+    "testci": "jest --config ./jest.config.js",
+    "coverage": "jest --coverage --watchAll --config ./jest.config.js"
   },
   "repository": {
     "type": "git",
