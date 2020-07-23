@@ -53,21 +53,17 @@ describe('MSTR REST', () => {
       expect(axios).toHaveBeenCalledWith(method);
     });
 
-    // it('should have been called with correct headers', async () => {
-    //   const headers = expect.objectContaining({
-    //     headers: {
-    //       'Accept': 'application/json',
-    //       'Content-Type': 'application/json',
-    //     },
-    //   });
-    //   mstrApi.setSessionCredentials(headers);
-    //   const sessionInfo = await mstrApi.login(loginInfo);
-    //   mstrApi.setSessionHeaders();
-    //   // const headers = expect.objectContaining({
-    //   //   Accept: 'application/json',
-    //   //   'Content-Type': 'application/json',
-    //   // });
-    //   expect(axios).toHaveBeenCalledWith(headers);
-    // });
+    it('Should have been with correct headers', async () => {
+      const headers = expect.objectContaining({
+        headers: {
+          Accept: 'application/json',
+          'Accept-Encoding': 'gzip, deflate, br',
+          'Content-Type': 'application/json',
+          'X-MSTR-AuthToken': 'mockAuthToken',
+        },
+      });
+      const sessionInfo = await mstrApi.login(loginInfo);
+      expect(axios).toHaveBeenCalledWith(headers);
+    });
   });
 });
