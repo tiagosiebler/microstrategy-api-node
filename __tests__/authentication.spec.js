@@ -13,6 +13,10 @@ jest.mock('axios', () =>
   )
 );
 
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('MSTR REST', () => {
   const testUrl = 'http://localhost:8080/112U2Library/api';
 
@@ -22,47 +26,46 @@ describe('MSTR REST', () => {
     loginMode: 1,
   };
 
-  const mstrApi = new mstr.REST({
-    baseUrl: testUrl,
-  });
-
   describe('Authentication', () => {
-    test('axios should have been called', async () => {
+    it('axios should have been called', async () => {
+      const mstrApi = new mstr.REST({
+        baseUrl: testUrl,
+      });
       const sessionInfo = await mstrApi.login(loginInfo);
+
       expect(axios).toHaveBeenCalled();
     });
-    it('should store auth token after successs ful lllogin', () => {
+
+    it('should store auth token after successs ful lllogin', async () => {
+      const mstrApi = new mstr.REST({
+        baseUrl: testUrl,
+      });
+      const sessionInfo = await mstrApi.login(loginInfo);
       const headers = mstrApi.getSessionHeaders();
       expect(headers['X-MSTR-AuthToken']).toEqual('mockAuthToken');
     });
 
-    // it('should have been called with POST method', async () => {
-    //   const endpoint = expect.stringContaining('/api/auth/login');
-    //   const sessionInfo = await mstrApi.login(loginInfo);
-    //   const headers = mstrApi.getSessionHeaders();
-    //   expect(axios).toHaveBeenCalledWith({
-    //     url: endpoint,
-    //     method: 'POST',
-    //     headers,
-    //   });
-    // });
-
     it('Should have been called with POST method', async () => {
+      const mstrApi = new mstr.REST({
+        baseUrl: testUrl,
+      });
       const sessionInfo = await mstrApi.login(loginInfo);
       const method = expect.objectContaining({ method: 'POST' });
       expect(axios).toHaveBeenCalledWith(method);
     });
 
     it('Should have been with correct headers', async () => {
+      const mstrApi = new mstr.REST({
+        baseUrl: testUrl,
+      });
+      const sessionInfo = await mstrApi.login(loginInfo);
       const headers = expect.objectContaining({
         headers: {
           Accept: 'application/json',
           'Accept-Encoding': 'gzip, deflate, br',
           'Content-Type': 'application/json',
-          'X-MSTR-AuthToken': 'mockAuthToken',
         },
       });
-      const sessionInfo = await mstrApi.login(loginInfo);
       expect(axios).toHaveBeenCalledWith(headers);
     });
   });

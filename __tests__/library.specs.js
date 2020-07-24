@@ -22,17 +22,22 @@ describe('Testing Library module', () => {
     baseUrl: testUrl,
   });
 
-  test('Axios should have been called', async () => {
-    const sessionInfo = await mstrApi.login(loginInfo);
-    expect(axios).toHaveBeenCalled();
-  });
+  // test('Axios should have been called', async () => {
+  //   const sessionInfo = await mstrApi.login(loginInfo);
+  //   expect(axios).toHaveBeenCalled();
+  // });
 
-  test('should store auth toekn after successful login', async () => {
-    const headers = mstrApi.getSessionHeaders();
-    expect(headers['X-MSTR-AuthToken']).toEqual('mockAuthToken');
-  });
+  // test('should store auth toekn after successful login', async () => {
+  //   const headers = mstrApi.getSessionHeaders();
+  //   expect(headers['X-MSTR-AuthToken']).toEqual('mockAuthToken');
+  // });
 
   describe('Library -> getLibrary()', () => {
+    it('Should have been called with proper endpoint', () => {
+      const endpoint = expect.stringContaining('/api/library');
+      const library = mstrApi.library.getLibrary();
+      expect(axios).toHaveBeenCalledWith({ url: endpoint });
+    });
     it('Should have been called with GET method', async () => {
       const library = mstrApi.library.getLibrary();
     });
