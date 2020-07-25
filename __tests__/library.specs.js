@@ -33,13 +33,42 @@ describe('Testing Library module', () => {
   // });
 
   describe('Library -> getLibrary()', () => {
-    it('Should have been called with proper endpoint', () => {
-      const endpoint = expect.stringContaining('/api/library');
+    it('Should have been called with endpoint /api/library', () => {
+      const mstrApi = new mstr.REST({ baseUrl: testUrl });
       const library = mstrApi.library.getLibrary();
-      expect(axios).toHaveBeenCalledWith({ url: endpoint });
+      const endpoint = expect.stringMatching('/api/library');
+
+      expect(axios).toHaveBeenCalledWith(
+        expect.objectContaining({ url: endpoint })
+      );
     });
+
     it('Should have been called with GET method', async () => {
+      const mstrApi = new mstr.REST({ baseUrl: testUrl });
       const library = mstrApi.library.getLibrary();
+      const method = expect.objectContaining({ method: 'GET' });
+
+      expect(axios).toHaveBeenCalledWith(method);
+    });
+
+    it('should have been called with authToken header', async () => {
+      const mstrApi = new mstr.REST({
+        baseUrl: testUrl,
+      });
+      const sessionInfo = await mstrApi.login(loginInfo);
+      const headers = mstrApi.getSessionHeaders();
+      jest.clearAllMocks();
+      const library = mstrApi.library.getLibrary();
+      const expectedHeaders = expect.objectContaining({
+        headers: {
+          Accept: 'application/json',
+          'Accept-Encoding': 'gzip, deflate, br',
+          'Content-Type': 'application/json',
+          'X-MSTR-AuthToken': headers['X-MSTR-AuthToken'],
+        },
+      });
+      expect(axios).toHaveBeenCalledTimes(1);
+      expect(axios).toHaveBeenCalledWith(expectedHeaders);
     });
   });
 });
