@@ -3,9 +3,9 @@ File authentication.js
 
 function    endpoint
 DONE 1.- login       POST /auth/login
-2.- logout      POST /api/auth/logout
+DONE 2.- logout      POST /api/auth/logout
 3.- validateIdentityToken   GET /api/auth/identityToken
-4.- createIdentityToken POST /api/auth/identityToken
+DONE 4.- createIdentityToken POST /api/auth/identityToken
 5.- restoreIdentityToken    POST /api/auth/delegate
 6.- keepAlive   PUT /api/sessions
 7.- getConfigurationSessionInfo /api/sessions
