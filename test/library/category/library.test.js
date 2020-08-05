@@ -1,4 +1,4 @@
-const mstr = require('../lib/mstr');
+const mstr = require('../../../lib/mstr');
 const axios = require('axios');
 
 jest.mock('axios', () =>
