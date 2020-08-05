@@ -19,7 +19,7 @@ module.exports = (env = '') => {
       rules: [
         {
           test: /\.m?js$/,
-          exclude: /(node_modules|bower_components|samples|dist)/,
+          exclude: /(node_modules|bower_components|samples|dist|test|coverage)/,
           use: {
             loader: 'babel-loader',
             options: {
