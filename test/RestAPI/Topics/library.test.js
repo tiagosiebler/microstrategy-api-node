@@ -37,9 +37,8 @@ describe('Testing Library module', () => {
       const exampleFlag = 'customOutputFlag';
       const library = mstrApi.library.getLibrary(exampleFlag);
 
-      const correctEndpoint = expect.stringMatching('outputFlag=' + exampleFlag);
       const requestOptions = expect.objectContaining({
-        url: correctEndpoint
+        url: expect.stringMatching('outputFlag=' + exampleFlag)
       });
       expect(axios).toHaveBeenCalledWith(requestOptions);
     });
