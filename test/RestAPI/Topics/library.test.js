@@ -11,7 +11,7 @@ const sharedRestOptions = {
   skipThrowOnHTTPException: true
 };
 
-describe('Testing Library module', () => {
+describe('RESTAPI -> Library', () => {
 
   describe('getLibrary()', () => {
     it('Should always use GET', async () => {
