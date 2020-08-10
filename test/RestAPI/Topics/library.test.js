@@ -128,7 +128,7 @@ describe('Testing Library module', () => {
   })
 
   describe('Library -> getObject() method', () => {
-    it('should always use POST', async () => {
+    it('Should always use POST', async () => {
       const mstrApi = new mstr.REST(sharedRestOptions);
 
       const objectId = 'fakeObjectId';
@@ -179,7 +179,7 @@ describe('Testing Library module', () => {
       expect(axios).toHaveBeenCalledWith(requestOptions);
     });
 
-    it('should send the correct fields in query parameters', async () => {
+    it('Should send the correct fields in query parameters', async () => {
       const mstrApi = new mstr.REST(sharedRestOptions);
 
       const objectId = 'fakeObjectId';
@@ -197,7 +197,7 @@ describe('Testing Library module', () => {
   })
 
   describe('Library -> deleteObject() method', () => {
-    it('should always use DELETE', async () => {
+    it('Should always use DELETE', async () => {
       const mstrApi = new mstr.REST(sharedRestOptions);
 
       const objectId = 'fakeObjectId';
@@ -266,7 +266,7 @@ describe('Testing Library module', () => {
   })
 
   describe('Library -> deleteUserObject() method', () => {
-    it('should always use DELETE', async () => {
+    it('Should always use DELETE', async () => {
       const mstrApi = new mstr.REST(sharedRestOptions);
 
       const objectId = 'fakeObjectId';
@@ -336,10 +336,5 @@ describe('Testing Library module', () => {
 
       expect(axios).toHaveBeenCalledWith(requestOptions);
     });
-
-
-
-
-
   })
 });
