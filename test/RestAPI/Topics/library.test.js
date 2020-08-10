@@ -13,7 +13,7 @@ const sharedRestOptions = {
 
 describe('Testing Library module', () => {
 
-  describe('Library -> getLibrary() method:', () => {
+  describe('getLibrary()', () => {
     it('Should always use GET', async () => {
       const mstrApi = new mstr.REST(sharedRestOptions);
       const library = mstrApi.library.getLibrary();
@@ -63,7 +63,7 @@ describe('Testing Library module', () => {
     });
   });
 
-  describe('Library -> publishObject() method', () => {
+  describe('publishObject()', () => {
     it('should always use POST', async () => {
       const mstrApi = new mstr.REST(sharedRestOptions);
 
@@ -127,7 +127,7 @@ describe('Testing Library module', () => {
     })
   })
 
-  describe('Library -> getObject() method', () => {
+  describe('getObject()', () => {
     it('Should always use POST', async () => {
       const mstrApi = new mstr.REST(sharedRestOptions);
 
@@ -196,7 +196,7 @@ describe('Testing Library module', () => {
     })
   })
 
-  describe('Library -> deleteObject() method', () => {
+  describe('deleteObject()', () => {
     it('Should always use DELETE', async () => {
       const mstrApi = new mstr.REST(sharedRestOptions);
 
@@ -265,7 +265,7 @@ describe('Testing Library module', () => {
     });
   })
 
-  describe('Library -> deleteUserObject() method', () => {
+  describe('deleteUserObject()', () => {
     it('Should always use DELETE', async () => {
       const mstrApi = new mstr.REST(sharedRestOptions);
 
