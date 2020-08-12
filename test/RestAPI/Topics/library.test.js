@@ -10,21 +10,32 @@ const sharedRestOptions = {
   skipThrowOnHTTPException: true
 };
 
-describe('Testing Library module', () => {
+const sharedInputInfo = {
+  fakeAuthToken: 'someAuthToken',
+  projectId: 'fakeProjectID',
+  objectId: 'fakeObjectId',
+  fields: 'fakeField01,fakeField02',
+  userId: 'fakeUserId',
+  publishInfo: { fakePublishInfo: 'fakePublishInfoData' }
+}
 
-  describe('Library -> getLibrary() method:', () => {
+const mstrApi = new mstr.REST(sharedRestOptions);
+mstrApi.setAuthToken(sharedInputInfo.fakeAuthToken);
+
+describe('RESTAPI -> Library', () => {
+
+  describe('getLibrary()', () => {
+
+    beforeEach(() => {
+      mstrApi.library.getLibrary();
+    })
+
     it('Should always use GET', async () => {
-      const mstrApi = new mstr.REST(sharedRestOptions);
-      const library = mstrApi.library.getLibrary();
-
       const requestOptions = expect.objectContaining({ method: 'GET' });
       expect(axios).toHaveBeenCalledWith(requestOptions);
     });
 
     it('Should always direct to the correct endpoint', async () => {
-      const mstrApi = new mstr.REST(sharedRestOptions);
-      const library = mstrApi.library.getLibrary();
-
       const requestOptions = expect.objectContaining({
         url: expect.stringMatching('/api/library')
       });
@@ -32,10 +43,8 @@ describe('Testing Library module', () => {
     });
 
     it('Correctly passes outputFlag parameter, if defined', () => {
-      const mstrApi = new mstr.REST(sharedRestOptions);
-
       const exampleFlag = 'customOutputFlag';
-      const library = mstrApi.library.getLibrary(exampleFlag);
+      library = mstrApi.library.getLibrary(exampleFlag);
 
       const requestOptions = expect.objectContaining({
         url: expect.stringMatching('outputFlag=' + exampleFlag)
@@ -44,21 +53,163 @@ describe('Testing Library module', () => {
     });
 
     it('Automatically includes auth-token, if module already has a token stored', () => {
-      const fakeAuthToken = 'someAuthToken';
-
-      // either call login API via module to store token, or manually provide a token to store
-      const mstrApi = new mstr.REST(sharedRestOptions);
-      mstrApi.setAuthToken(fakeAuthToken);
-
-      const library = mstrApi.library.getLibrary();
-
       const requestOptions = expect.objectContaining({
         headers: expect.objectContaining({
-          'X-MSTR-AuthToken': fakeAuthToken
+          'X-MSTR-AuthToken': sharedInputInfo.fakeAuthToken
         })
       });
-
       expect(axios).toHaveBeenCalledWith(requestOptions);
     });
   });
+
+  describe('publishObject()', () => {
+
+    beforeEach(() => {
+      mstrApi.library.publishObject(sharedInputInfo.publishInfo, sharedInputInfo.projectId);
+    })
+
+    it('should always use POST', async () => {
+      const requestOptions = expect.objectContaining({ method: 'POST' });
+      expect(axios).toHaveBeenCalledWith(requestOptions);
+    })
+
+    it('Should always direct to the correct endpoint', async () => {
+      const requestOptions = expect.objectContaining({
+        url: expect.stringMatching('/api/library')
+      });
+      expect(axios).toHaveBeenCalledWith(requestOptions);
+    });
+
+    it('Automatically includes auth-token, if module already has a token stored', () => {
+      const requestOptions = expect.objectContaining({
+        headers: expect.objectContaining({
+          'X-MSTR-AuthToken': sharedInputInfo.fakeAuthToken
+        })
+      });
+      expect(axios).toHaveBeenCalledWith(requestOptions);
+    });
+
+    it('Should send the correct object info', async () => {
+      requestOptions = expect.objectContaining({
+        data: sharedInputInfo.publishInfo
+      })
+      expect(axios).toHaveBeenCalledWith(requestOptions)
+    })
+  })
+
+  describe('getObject()', () => {
+
+    beforeEach(() => {
+      mstrApi.library.getObject(sharedInputInfo.objectId, sharedInputInfo.projectId, sharedInputInfo.fields);
+    })
+
+    it('Should always use POST', async () => {
+      const requestOptions = expect.objectContaining({ method: 'GET' });
+      expect(axios).toHaveBeenCalledWith(requestOptions);
+    })
+
+    it('Should always direct to the correct endpoint', async () => {
+      const requestOptions = expect.objectContaining({
+        url: expect.stringMatching(`/api/library/${sharedInputInfo.objectId}`)
+      });
+      expect(axios).toHaveBeenCalledWith(requestOptions);
+    });
+
+    it('Automatically includes auth-token, if module already has a token stored', () => {
+      const requestOptions = expect.objectContaining({
+        headers: expect.objectContaining({
+          'X-MSTR-AuthToken': sharedInputInfo.fakeAuthToken
+        })
+      });
+      expect(axios).toHaveBeenCalledWith(requestOptions);
+    });
+
+    it('Should send the correct fields in query parameters', async () => {
+      const separateFields = sharedInputInfo.fields.split(',');
+
+      const requestOptions = expect.objectContaining({
+        url: expect.stringMatching(`fields=${separateFields[0]}%2C${separateFields[1]}`)
+      });
+      expect(axios).toHaveBeenCalledWith(requestOptions);
+    })
+  })
+
+  describe('deleteObject()', () => {
+
+    beforeEach(() => {
+      mstrApi.library.deleteObject(sharedInputInfo.objectId, sharedInputInfo.projectId);
+    })
+
+    it('Should always use DELETE', async () => {
+      const requestOptions = expect.objectContaining({ method: 'DELETE' });
+      expect(axios).toHaveBeenCalledWith(requestOptions);
+    })
+
+    it('Should always direct to the correct endpoint', async () => {
+      const requestOptions = expect.objectContaining({
+        url: expect.stringMatching(`/api/library/${sharedInputInfo.objectId}`)
+      });
+      expect(axios).toHaveBeenCalledWith(requestOptions);
+    });
+
+    it('Automatically includes auth-token, if module already has a token stored', () => {
+      const requestOptions = expect.objectContaining({
+        headers: expect.objectContaining({
+          'X-MSTR-AuthToken': sharedInputInfo.fakeAuthToken
+        })
+      });
+      expect(axios).toHaveBeenCalledWith(requestOptions);
+    });
+
+    it('Should have been called with the correct project id header', () => {
+      mstrApi.setProjectId(sharedInputInfo.projectId);
+
+      const requestOptions = expect.objectContaining({
+        headers: expect.objectContaining({
+          'X-MSTR-ProjectID': sharedInputInfo.projectId
+        })
+      });
+      expect(axios).toHaveBeenCalledWith(requestOptions);
+    });
+  })
+
+  describe('deleteUserObject()', () => {
+
+    beforeEach(() => {
+      mstrApi.library.deleteUserObject(sharedInputInfo.objectId, sharedInputInfo.userId, sharedInputInfo.projectId);
+    })
+
+    it('Should always use DELETE', async () => {
+      const requestOptions = expect.objectContaining({ method: 'DELETE' });
+
+      expect(axios).toHaveBeenCalledWith(requestOptions);
+    })
+
+    it('Should always direct to the correct endpoint', async () => {
+      const requestOptions = expect.objectContaining({
+        url: expect.stringMatching(`/api/library/${sharedInputInfo.objectId}/recipients/${sharedInputInfo.userId}`)
+      });
+      expect(axios).toHaveBeenCalledWith(requestOptions);
+    });
+
+    it('Automatically includes auth-token, if module already has a token stored', () => {
+      const requestOptions = expect.objectContaining({
+        headers: expect.objectContaining({
+          'X-MSTR-AuthToken': sharedInputInfo.fakeAuthToken
+        })
+      });
+      expect(axios).toHaveBeenCalledWith(requestOptions);
+    });
+
+    it('Should have been called with the correct project id header', () => {
+      mstrApi.setProjectId(sharedInputInfo.projectId);
+
+      const requestOptions = expect.objectContaining({
+        headers: expect.objectContaining({
+          'X-MSTR-ProjectID': sharedInputInfo.projectId
+        })
+      });
+      expect(axios).toHaveBeenCalledWith(requestOptions);
+    });
+  })
 });
