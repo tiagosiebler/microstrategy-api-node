@@ -26,9 +26,8 @@ describe('RESTAPI -> Library', () => {
 
   describe('getLibrary()', () => {
 
-    let library;
     beforeEach(() => {
-      library = mstrApi.library.getLibrary();
+      mstrApi.library.getLibrary();
     })
 
     it('Should always use GET', async () => {
@@ -65,9 +64,8 @@ describe('RESTAPI -> Library', () => {
 
   describe('publishObject()', () => {
 
-    let requestAction;
     beforeEach(() => {
-      requestAction = mstrApi.library.publishObject(sharedInputInfo.publishInfo, sharedInputInfo.projectId);
+      mstrApi.library.publishObject(sharedInputInfo.publishInfo, sharedInputInfo.projectId);
     })
 
     it('should always use POST', async () => {
@@ -101,9 +99,8 @@ describe('RESTAPI -> Library', () => {
 
   describe('getObject()', () => {
 
-    let requestAction;
     beforeEach(() => {
-      requestAction = mstrApi.library.getObject(sharedInputInfo.objectId, sharedInputInfo.projectId, sharedInputInfo.fields);
+      mstrApi.library.getObject(sharedInputInfo.objectId, sharedInputInfo.projectId, sharedInputInfo.fields);
     })
 
     it('Should always use POST', async () => {
@@ -139,9 +136,8 @@ describe('RESTAPI -> Library', () => {
 
   describe('deleteObject()', () => {
 
-    let requestAction;
     beforeEach(() => {
-      requestAction = mstrApi.library.deleteObject(sharedInputInfo.objectId, sharedInputInfo.projectId);
+      mstrApi.library.deleteObject(sharedInputInfo.objectId, sharedInputInfo.projectId);
     })
 
     it('Should always use DELETE', async () => {
@@ -179,9 +175,8 @@ describe('RESTAPI -> Library', () => {
 
   describe('deleteUserObject()', () => {
 
-    let requestAction;
     beforeEach(() => {
-      requestAction = mstrApi.library.deleteUserObject(sharedInputInfo.objectId, sharedInputInfo.userId, sharedInputInfo.projectId);
+      mstrApi.library.deleteUserObject(sharedInputInfo.objectId, sharedInputInfo.userId, sharedInputInfo.projectId);
     })
 
     it('Should always use DELETE', async () => {
