@@ -1,5 +1,5 @@
 const mstr = require('../../../lib/mstr');
-const axios = require('axios');
+const { assertHTTPRequestRequirement, assertHTTPRequestRequirements } = require('../../utils/requestAssertUtils');
 
 jest.mock('axios', () => jest.fn(() => Promise.resolve({})));
 
@@ -17,20 +17,6 @@ const sharedInputInfo = {
   fields: 'fakeField01,fakeField02',
   userId: 'fakeUserId',
   publishInfo: { fakePublishInfo: 'fakePublishInfoData' }
-}
-
-function assertHTTPRequestRequirement(requirement) {
-
-  const requestOptions = expect.objectContaining(requirement);
-  expect(axios).toHaveBeenCalledWith(requestOptions);
-}
-
-function assertHTTPRequestRequirements(requirements) {
-  for (const { name, requirement } of requirements) {
-    it(name, () => {
-      assertHTTPRequestRequirement(requirement);
-    })
-  }
 }
 
 describe('RESTAPI -> Library', () => {
