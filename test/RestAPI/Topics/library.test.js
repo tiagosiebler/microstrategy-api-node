@@ -19,16 +19,16 @@ const sharedInputInfo = {
   publishInfo: { fakePublishInfo: 'fakePublishInfoData' }
 }
 
-function assetHTTPRequestRequirement(requirement) {
+function assertHTTPRequestRequirement(requirement) {
 
   const requestOptions = expect.objectContaining(requirement);
   expect(axios).toHaveBeenCalledWith(requestOptions);
 }
 
-function assetHTTPRequestRequirements(requirements) {
+function assertHTTPRequestRequirements(requirements) {
   for (const { name, requirement } of requirements) {
     it(name, () => {
-      assetHTTPRequestRequirement(requirement);
+      assertHTTPRequestRequirement(requirement);
     })
   }
 }
@@ -42,7 +42,7 @@ describe('RESTAPI -> Library', () => {
     mstrApi.library.getLibrary();
   })
   it('Automatically includes auth-token, if module already has a token stored', () => {
-    assetHTTPRequestRequirement({
+    assertHTTPRequestRequirement({
       headers: expect.objectContaining({
         'X-MSTR-AuthToken': sharedInputInfo.fakeAuthToken
       })
@@ -62,12 +62,12 @@ describe('RESTAPI -> Library', () => {
       },
     ];
 
-    assetHTTPRequestRequirements(requirements);
+    assertHTTPRequestRequirements(requirements);
 
     it('Corectly passes outputFlag parameter, if defined', () => {
       const exampleFlag = 'customOutputFlag';
       mstrApi.library.getLibrary(exampleFlag);
-      assetHTTPRequestRequirement({
+      assertHTTPRequestRequirement({
         url: expect.stringMatching('outputFlag=' + exampleFlag)
       })
     })
@@ -99,7 +99,7 @@ describe('RESTAPI -> Library', () => {
       },
     ];
 
-    assetHTTPRequestRequirements(requirements);
+    assertHTTPRequestRequirements(requirements);
 
   })
 
@@ -122,13 +122,13 @@ describe('RESTAPI -> Library', () => {
       },
     ];
 
-    assetHTTPRequestRequirements(requirements);
+    assertHTTPRequestRequirements(requirements);
 
     it('Should send the correct fields in query parameters', async () => {
 
       const separateFields = sharedInputInfo.fields.split(',');
 
-      assetHTTPRequestRequirement({
+      assertHTTPRequestRequirement({
         url: expect.stringMatching(`fields=${separateFields[0]}%2C${separateFields[1]}`)
       })
 
@@ -155,11 +155,11 @@ describe('RESTAPI -> Library', () => {
       },
     ];
 
-    assetHTTPRequestRequirements(requirements);
+    assertHTTPRequestRequirements(requirements);
 
     it('Should have been called with the correct project id header', () => {
       mstrApi.setProjectId(sharedInputInfo.projectId);
-      assetHTTPRequestRequirement({
+      assertHTTPRequestRequirement({
         headers: expect.objectContaining({
           'X-MSTR-ProjectID': sharedInputInfo.projectId
         })
@@ -186,13 +186,13 @@ describe('RESTAPI -> Library', () => {
       },
     ];
 
-    assetHTTPRequestRequirements(requirements);
+    assertHTTPRequestRequirements(requirements);
 
     it('Should have been called with the correct project id header', () => {
 
       mstrApi.setProjectId(sharedInputInfo.projectId);
 
-      assetHTTPRequestRequirement({
+      assertHTTPRequestRequirement({
         headers: expect.objectContaining({
           'X-MSTR-ProjectID': sharedInputInfo.projectId
         })
