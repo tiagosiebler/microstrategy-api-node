@@ -1,6 +1,5 @@
 const axios = require('axios');
 
-
 const assertUtils = {
     assertHTTPRequestRequirement: (requirement) => {
         const requestOptions = expect.objectContaining(requirement);
@@ -11,9 +10,9 @@ const assertUtils = {
         for (const { name, requirement } of requirements) {
             it(name, () => {
                 assertUtils.assertHTTPRequestRequirement(requirement);
-            })
+            });
         }
     }
-}
+};
 
 module.exports = assertUtils;  
