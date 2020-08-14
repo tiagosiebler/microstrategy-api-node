@@ -1,8 +1,8 @@
 # MicroStrategy REST API [![npm version](https://img.shields.io/npm/v/microstrategy.svg)][1] [![npm size](https://img.shields.io/bundlephobia/min/microstrategy.svg)][1] [![npm downloads](https://img.shields.io/npm/dt/microstrategy.svg)][1]
-![NPM Publish](https://github.com/tiagosiebler/microstrategy-api-node/workflows/Publish%20to%20NPM/badge.svg?branch=master)
+[![CircleCI](https://circleci.com/gh/tiagosiebler/microstrategy-api-node.svg?style=shield)](https://circleci.com/gh/tiagosiebler/microstrategy-api-node)
 [![CodeFactor](https://www.codefactor.io/repository/github/tiagosiebler/microstrategy-api-node/badge)](https://www.codefactor.io/repository/github/tiagosiebler/microstrategy-api-node)
 
-A light npm wrapper around some of the MicroStrategy REST API endpoints.
+A light Node.js SDK for the MicroStrategy REST and Task APIs.
 
 ## Dependencies
 HTTP requests are handled by [axios](https://www.npmjs.com/package/axios), the promise based HTTP client for the browser and node.js.
