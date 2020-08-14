@@ -50,7 +50,7 @@ describe('RESTAPI -> Library', () => {
 
     assertHTTPRequestRequirements(requirements);
 
-    it('Corectly passes outputFlag parameter, if defined', () => {
+    it('Should relay method parameter correctly, if defined', () => {
       const exampleFlag = 'customOutputFlag';
       mstrApi.library.getLibrary(exampleFlag);
       assertHTTPRequestRequirement({
@@ -110,7 +110,7 @@ describe('RESTAPI -> Library', () => {
 
     assertHTTPRequestRequirements(requirements);
 
-    it('Should send the correct fields in query parameters', async () => {
+    it('Should realy fields correctly in query parameters if provided', async () => {
 
       const separateFields = sharedInputInfo.fields.split(',');
 
